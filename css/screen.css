@@ -1,3 +1,59 @@
+.pokemon {
+    height: auto;
+}
+
+.type {
+    width: 75px;
+    border: 1px solid white;
+    border-radius: 50px;
+    text-align: center;
+    color: white;
+}
+
+progress {
+    width: 35%;
+    height: 25px;
+}
+
+progress:after {
+    margin: 15%;
+    content: attr(value);
+    color: white;
+}
+
+.label {
+    display: inline-block;
+    width: 50%;
+    margin: 10px;
+}
+
+.c-pokedex {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+}
+
+.grid_photo { grid-area: 1 / 1 / 3 / 3; }
+.grid_type { grid-area: 3 / 1 / 4 / 3; }
+.grid_stats { grid-area: 1 / 3 / 3 / 6; }
+.grid_profile { grid-area: 3 / 3 / 4 / 6; }
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 /*------------------------------------*\
 #FONTS
 \*------------------------------------*/
@@ -7,11 +63,58 @@
 \*------------------------------------*/
 
 :root {
-    /* colors */
+    /* typography */
+    --global-root-font-size: 15;
 
-    /* opacity */
+    /* colors */
+    --global-color-alpha-light: #ef5350;
+    --global-color-alpha: #e6312e;
+
+    --global-color-beta: #ffe6e6;
+
+
+    
+    --global-color-neutral-xxx-light: #fff2f2;
+    --global-color-neutral-xx-light: #ffe6e6;
+    --global-color-neutral-x-light: #ffb4b3;
+    --global-color-neutral-light:#ef5350;
+    --global-color-neutral: #e6312e;
+    --global-color-neutral-dark: #b31512;
+    --global-color-neutral-x-dark: #800200;
+    --global-color-neutral-xx-dark: #4d0100;
+    --global-color-neutral-xxx-dark: #1a0000;
+
+    /* Shadows */
+    --global-box-shadow: 0 0 0 1px rgba(0,0,0,.025), 0 2px 6px rgba(0,0,0,.05);
+    --global-box-shadow-lg: 0 0 0 1px rgba(0,0,0,.025), 0 2px 10px rgba(0,0,0,.1);
+
+    --global-input-shadow: 0 2px 3px rgba(0,0,0,.05);
+    --global-input-focus-shadow: 0 0 5px var(--global-color-alpha-light);
+
+    /* radius */
+    --global-borderRadius: calc(4rem / var(--global-root-font-size));
+
+    /* Whitespace */    
+    /* 
+        global font-size = 15px
+        baseline = 5px        
+        15px = 1rem
+        5px = 1rem/3
+        This would equal to 0.3333333...rem but let the browser do the math
+    */
+    --global-baseline: calc(1rem / 3); 
+    --global-whitespace-xxs: var(--global-baseline); /* = 5px */
+    --global-whitespace-xs: calc(var(--global-baseline) * 2); /* = 10px */
+    --global-whitespace-sm: calc(var(--global-baseline) * 3); /* = 15px */
+    --global-whitespace-md: calc(var(--global-baseline) * 4); /* = 20px */
+    --global-whitespace-lg: calc(var(--global-baseline) * 5); /* = 25px */
+    --global-whitespace-xl: calc(var(--global-baseline) * 6); /* = 30px */
 
     /* transitions */
+    --global-transition-alpha: .2s;
+	--global-transition-beta: 1s;
+
+    --pi: 3.14159265359;
 }
 
 /*------------------------------------*\
@@ -25,12 +128,15 @@
 */
 
 html {
-    font-size: 16px;
-    line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
+    /* font-size: 15px; */
+    font-size: 93.75%; /* = 15px in case of 16px default font-size */
+    line-height: 1.6666667em; /* = 25px */
+    font-family: "Source Sans Pro", Helvetica, arial, sans-serif;
+    color: var(--global-color-neutral-xxx-dark);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--global-color-neutral-xxxx-light);
 }
 
 *,
@@ -47,13 +153,13 @@ html {
 */
 
 ::-moz-selection {
-    background: red;
+    background: var(--global-color-alpha);
     color: white;
     text-shadow: none;
 }
 
 ::selection {
-    background: red;
+    background: var(--global-color-alpha);
     color: white;
     text-shadow: none;
 }
@@ -86,30 +192,36 @@ h3 {
 }
 
 h1 {
-    font-size: 36px;
-    line-height: 48px;
-    margin: 0 0 24px;
+    /* font-size: 36px; */
+    font-size: 2.4rem;
+    line-height: calc(var(--global-baseline) * 10);
+    margin: 0 0 var(--global-whitespace-md);
 }
 
 h2 {
-    font-size: 32px;
-    line-height: 40px;
-    margin: 0 0 24px;
+    /* font-size: 28px; */
+    /* font-size: 1.8666666667rem; */
+    font-size: calc(28rem / var(--global-root-font-size));
+    font-weight: normal;
+    line-height: calc(var(--global-baseline) * 8);
+    margin: 0 0 var(--global-whitespace-lg);
 }
 
 h3 {
-    font-size: 26px;
-    line-height: 32px;
-    margin: 0 0 24px;
+    /* font-size: 18px; */
+    font-size: 1.2rem;
+    line-height: calc(var(--global-baseline) * 6);
+    margin: 0 0 var(--global-whitespace-md);
 }
 
 h4,
 h5,
 h6 {
-    font-size: 16px;
+    /* font-size: 15px; */
+    font-size: 1rem;
     font-weight: 600;
-    line-height: 24px;
-    margin: 0 0 24px;
+    line-height: calc(var(--global-baseline) * 5);
+    margin: 0 0 var(--global-whitespace-md);
 }
 
 p,
@@ -119,7 +231,7 @@ dl,
 table,
 address,
 figure {
-    margin: 0 0 24px;
+    margin: 0 0 var(--global-whitespace-md);
 }
 
 ul,
@@ -135,8 +247,8 @@ li ol {
 blockquote {
     font-style: normal;
     font-size: 23px;
-    line-height: 32px;
-    margin: 0 0 24px;
+    line-height: calc(var(--global-baseline) * 5);
+    margin: 0 0 var(--global-whitespace-md);
 }
 
 blockquote * {
@@ -155,29 +267,25 @@ hr {
     border: 0;
     height: 1px;
     background: LightGrey;
-    margin: 0 0 24px;
+    margin: 0 0 var(--global-whitespace-md);
 }
 
 a {
-    color: red;
-    outline-color: red;
+    transition: all var(--global-transition-alpha);
+    color: var(--global-color-beta);
+    outline-color: var(--global-color-beta);
     outline-width: medium;
     outline-offset: 2px;
 }
 
 a:visited,
 a:active {
-    color: red;
+    color: var(--global-color-beta);
 }
 
 a:hover,
 a:focus {
-    color: red;
-}
-
-label,
-input {
-    display: block;
+    color: var(--global-color-alpha);
 }
 
 select {
@@ -185,12 +293,47 @@ select {
 }
 
 input::placeholder {
-    color: gray;
+    color: var(--global-color-neutral-light);
 }
 
 /*------------------------------------*\
 #OBJECTS
 \*------------------------------------*/
+
+/*
+    Objects: Row
+    ---
+    Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+
+.o-row {
+    position: relative;
+    padding: var(--global-whitespace-lg) var(--global-whitespace-lg) var(--global-baseline);
+}
+
+/*
+    Objects: Container
+    ---
+    Creates a horizontal container that sets de global max-width
+*/
+
+.o-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 78em; /* 78 * 15px = 1170 */
+    width: 100%;
+}
+
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+
+.o-list {
+    list-style: none;
+    padding: 0;
+}
 
 /*
     Object: Button reset
@@ -249,57 +392,838 @@ input::placeholder {
 */
 
 .c-logo {
-
+    margin: 0;
+    /* font-size: 15px; */
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    /* letter-spacing: 2px; */
+    letter-spacing: 0.13333333em; /* = 2px */
+    line-height: var(--global-whitespace-md);
+    color: #fff;
 }
 
 /*
-    Component: Sun
+    Component: Loader
     ---
-    The sun
+    Global loader component
 */
 
-.c-sun {
+.c-load-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 100%;
+	min-height: 376px;
 
 }
 
-.c-logo .c-sun {
+.c-loader {
+    /* // all metrics should be in px otherwise calc won't work for some reason. */
+    --loader-viewbox: 50px; /* this variable should be the same as the viewbox attribute in html. */
+    --loader__circle-stroke-width: 5px;
+    --loader__circle-center: calc(var(--loader-viewbox) / 2);
+    /* // The stroke is centered so we need to take that into account.
+    // Otherwise some parts would be outside of the viewbox */
+    --loader__circle-radius: calc(var(--loader-viewbox) / 2 - var(--loader__circle-stroke-width) / 2);
+    --loader__circle-circumference: calc(var(--loader__circle-radius) * 2 * var(--pi));
+    --loader__circle-gap: 20px;
+    --loader__circle-circumference-gap: calc(var(--loader__circle-circumference) - var(--loader__circle-gap));
+    --animation-duration: 1.5s;
+    width: var(--loader-viewbox);
+    height: var(--loader-viewbox);
+    transition: opacity var(--global-transition-beta);
+}
 
+.c-loader__circle {
+    stroke: OrangeRed;
+    fill: transparent;
+    stroke-linecap: round;
+    stroke-width: var(--loader__circle-stroke-width);
+    stroke-dasharray: var(--loader__circle-gap), var(--loader__circle-circumference-gap);
+    stroke-dashoffset: 0;
+    r: var(--loader__circle-radius);
+    cx: var(--loader__circle-center);
+    cy: var(--loader__circle-center);
+    animation: rotateCircle calc(var(--animation-duration) + 0.25s) linear infinite,
+    strokeCircle var(--animation-duration) infinite,
+    strokeColor calc(var(--animation-duration) * 5) calc(var(--animation-duration) / 2) infinite;
+    transform-origin: center;
+}
+
+@keyframes rotateCircle {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes strokeCircle {
+    50% {
+        stroke-dasharray: var(--loader__circle-circumference-gap), var(--loader__circle-gap);
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dasharray: var(--loader__circle-gap), var(--loader__circle-circumference-gap);
+        stroke-dashoffset: calc(var(--loader__circle-circumference) * -1);
+    }
+}
+
+@keyframes strokeColor {
+    20% {
+        stroke: gold;
+    }
+    40% {
+        stroke: LimeGreen;
+    }
+    60% {
+        stroke: DodgerBlue;
+    }
+    80% {
+        stroke: HotPink;
+    }
 }
 
 /*
     Component: App
     ---
-    Main app wrapper
+    Global app component
 */
 
+.c-app {
+    --c-app__topbar-height: calc(var(--global-baseline) * 14);
+    min-height: 100vh;
+}
+
+.c-app__logo {
+    background-color: var(--global-color-neutral);
+    padding: 0 var(--global-whitespace-lg);
+    height: var(--c-app__topbar-height);
+    display: flex;
+    align-items: center;
+}
+
+.c-app__topbar {
+    background-color: #fff;
+    /* background-color: rgba(255,255,255,.6);
+    backdrop-filter: blur(5px); */
+    box-shadow: var(--global-box-shadow);
+    z-index: 20;
+    display: none;
+}
+
+.c-app__sidebar {
+    background-color: var(--global-color-neutral-light);
+    display: none;
+}
+
+.c-app__main {
+    background-color: var(--global-color-neutral-xxxx-light);
+}
+
+@media (min-width: 62em) {
+
+    .c-app__topbar,
+    .c-app__sidebar {
+        display: block;
+    }
+
+    .c-app {
+        display: grid;
+        grid-template-columns: 17rem 1fr;
+        grid-template-rows: var(--c-app__topbar-height) 1fr;
+    }
+
+    /* Scroll behaviour */
+
+    /*
+        Solution 1
+        Laat toe om overal te scrollen om de main te laten scrollen.
+        Tenzij de navigatie niet meer helemaal in de viewport past, dan kan je ook in sidebar scrollen.
+        Zorgt er ook voor dat c-app__main onder c-app__topbar verdwijnt.
+        Is meer "webby".
+    */
+
+    /* .c-app__topbar,
+    .c-app__logo {
+        position: sticky;
+        top: 0;
+    }
+
+    .c-app__sidebar {
+        position: sticky;
+        top: var(--c-app__topbar-height);
+        height: calc(100vh - var(--c-app__topbar-height));
+        overflow: auto;
+    } */
+
+    /*
+        Solution 2
+        Zorgt er voor dat je enkel in de main of de sidebar kan scrollen.
+        Is meer "appy".
+    */
+
+    .c-app__sidebar,
+    .c-app__main {
+        height: calc(100vh - var(--c-app__topbar-height));
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
 /*
-    Component: Horizon
+    Component: Main Navigation
     ---
-    Horizon with sun visualisation
+    Main navigation component
 */
+
+.c-main-nav__list {
+    margin-bottom: 0;
+}
+
+.c-main-nav__item {
+    margin: var(--global-baseline) 0;
+}
+
+.c-main-nav__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    /* font-size: 15px; */
+    /* line-height: 20px; */
+    /* padding: 15px 25px 15px 20px; */
+    font-size: 1rem;    
+    line-height: calc(var(--global-baseline) * 4);
+    padding: var(--global-whitespace-sm) var(--global-whitespace-lg) var(--global-whitespace-sm) var(--global-whitespace-md);
+    border-left: 5px solid var(--global-color-alpha);
+    transform: translateX(-5px);
+    width: calc(100% + 5px);
+    transition: transform var(--global-transition-beta);
+}
+
+.c-main-nav__link:hover {
+    /* transition: all var(--global-transition-alpha); */
+    transition-duration: var(--global-transition-alpha);
+}
+
+.c-main-nav__link,
+.c-main-nav__link:hover,
+.c-main-nav__link:visited {
+    color: #fff;
+}
+
+.c-main-nav__link:hover,
+.c-main-nav__link:focus,
+.is-selected .c-main-nav__link {
+    color: #fff;
+    background-color: var(--global-color-neutral);
+    /* border-color: var(--global-color-alpha); */
+    /* border-left-width: 5px; */
+    transform: none;
+}
+
+.c-main-nav__icon {
+    /* display: block; */
+    /* width: 16px;
+    height: 16px; */
+    width: 1rem; /* = 15px */
+    height: 1rem; 
+    margin-right: var(--global-whitespace-xs);
+    fill: var(--global-color-neutral-light);
+    transition: fill var(--global-transition-alpha);
+}
+
+.c-main-nav__link:hover .c-main-nav__icon,
+.c-main-nav__link:focus .c-main-nav__icon,
+.is-selected .c-main-nav__icon {
+    fill: var(--global-color-alpha);
+}
+
+/*
+    Component: topbar
+*/
+
+
+.c-topbar {
+    padding: 0 var(--global-whitespace-lg);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/*
+    Component: search
+*/
+
+.c-search {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+
+.c-search__input {
+    all: unset;
+    width: 100%;
+    line-height: calc(var(--global-baseline) * 6);
+}
+
+.c-search__button {
+    display: block;
+    background-color: transparent;
+    margin-right: var(--global-whitespace-sm);
+    /* border: none; */
+}
+
+.c-search__icon {
+    display: block;
+    /* width: 16px;
+    height: 16px; */
+    width: 1rem;
+    height: 1rem;
+    fill: var(--global-color-neutral-x-light);
+}
+
+/*
+    Component: user
+*/
+
+.c-user {
+    display: flex;
+    align-items: center;
+}
+
+.c-user__dropdown-button {
+    display: flex;
+    align-items: center;
+    white-space:nowrap;
+    line-height: var(--global-whitespace-md);
+    outline: none;
+    color: var(--global-color-neutral);
+}
+
+.c-user__dropdown-button:focus {
+    color: var(--global-color-neutral-x-dark);
+}
+
+.c-user__dropdown-icon {
+    display: block;
+    /* width: 11px;
+    height: 16px; */
+    width: calc(11rem / var(--global-root-font-size));
+    height: calc(16rem / var(--global-root-font-size));
+    fill: var(--global-color-neutral-x-light);
+    margin-left: calc(var(--global-baseline) * 2);
+}
+
+.c-user__avatar {
+    /* width: 40px;
+    height: 40px; */
+    width: calc(var(--global-baseline) * 8);
+    height: calc(var(--global-baseline) * 8);
+    background-color: var(--global-color-neutral-xxx-light);
+    border-radius: 100%;
+    flex-shrink: 0;
+    margin-left: calc(var(--global-baseline) * 2);
+}
+
+/*
+    Component: Quick nav
+*/
+
+.c-quick-nav {
+    margin-right: calc(var(--global-baseline) * 5);
+    padding-right: calc(var(--global-baseline) * 5);
+    border-right: 1px solid var(--global-color-neutral-xxx-light);
+    height: calc(var(--global-baseline) * 6);
+    display: flex;
+    align-items: center;
+}
+
+.c-quick-nav__list {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.c-quick-nav__item + .c-quick-nav__item {
+    margin-left: var(--global-whitespace-sm);
+}
+
+.c-quick-nav__action {
+    transition: color var(--global-transition-alpha);
+    cursor: pointer;
+    outline: none;
+}
+
+.c-quick-nav__action--has-notifications::after {
+    content: '';
+    display: block;
+    width: calc(12rem / var(--global-root-font-size));
+    height: calc(12rem / var(--global-root-font-size));
+    border-radius: 100%;
+    border: 2px solid white;
+    background-color: #FFC06A;
+    position: absolute;
+    top: -5px;
+    right: -3px;
+    top: calc(-5rem / var(--global-root-font-size));
+    right: calc(-3rem / var(--global-root-font-size));
+
+}
+
+.c-quick-nav__action,
+.c-quick-nav__action:visited,
+.c-quick-nav__action:active {
+    display: block;
+    color: var(--global-color-neutral-x-light);
+}
+
+.c-quick-nav__action:hover,
+.c-quick-nav__action:focus {
+    color: var(--global-color-neutral-light);
+}
+
+.c-quick-nav__icon {
+    display: block;
+    /* width: 16px;
+    height: 16px; */
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+    transition: fill var(--global-transition-alpha);
+}
+
+/*
+    Component: Dropdown
+*/
+
+.c-dropdown-container {
+    position: relative;
+}
+
+.c-dropdown-toggle.is-open + .c-dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+}
+
+.c-dropdown-toggle.is-open + .c-dropdown {
+  opacity: 1;
+}
+
+.c-dropdown {
+    /* display: none; */
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 100%;
+    margin-top: calc(var(--global-baseline) * 3);
+    transform: translateY(5px);
+    width: 10rem;
+    background-color: white;
+    box-shadow: var(--global-box-shadow-lg);
+    transition: all var(--global-transition-alpha);
+}
+
+.c-dropdown--right {
+    right: 0;
+}
+
+.c-dropdown--notifications {
+    width: 30rem;
+    margin-right: calc(var(--global-baseline) * -5);
+}
+
+.c-dropdown__header {
+    border-bottom: 1px solid var(--global-color-neutral-xxxx-light);
+    padding: var(--global-whitespace-md);
+}
+
+.c-dropdown__footer {
+    border-top: 1px solid var(--global-color-neutral-xxxx-light);
+}
+
+.c-dropdown__title {
+    margin-bottom: 0;
+}
+
+.c-dropdown__body {
+    padding: calc(var(--global-baseline) * 2) var(--global-whitespace-md);
+}
+
+.c-dropdown__body--lg {
+    padding: var(--global-whitespace-md) var(--global-whitespace-lg);
+}
+
+.c-dropdown__list {
+    margin: 0;
+}
+
+.c-dropdown__link,
+.c-dropdown__link:visited,
+.c-dropdown__link:active {
+    display: block;
+    padding: var(--global-baseline) 0;
+    text-decoration: none;
+    color: var(--global-color-neutral);
+    /* font-size: 13px; */
+    font-size: 0.8666666667;
+}
+
+.c-dropdown__link:hover,
+.c-dropdown__link:focus {
+    color: var(--global-color-neutral-x-dark);
+}
+
+.c-dropdown__more-link {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: var(--global-whitespace-md);
+}
+
+/*
+    Component: Dashboard
+    ---
+    Dashboard component with CSS grid
+*/
+
+.c-dashboard {
+    display: grid;
+    grid-gap: var(--global-whitespace-lg);
+    margin-bottom: var(--global-whitespace-md);
+}
+
+.c-pokedex__item {
+    box-shadow: var(--global-box-shadow);
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 62em) {
+    .c-dashboard {
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    .c-pokedex__item {
+        grid-column: 1 / -1;
+    }
+}
+
+/*
+    Component: Card
+*/
+
+.c-card {
+    width: 100%;
+    height: 100%;
+}
+
+.c-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* margin-bottom: var(--global-whitespace-md); */
+}
+
+.c-card__title {
+    margin-bottom: 0;
+    /* font-size: 18px;
+    line-height: 25px; */
+    font-size: 1.2rem;
+    line-height: calc(var(--global-baseline) * 5);
+}
+
+.c-card__header,
+.c-card__body {
+    padding: var(--global-whitespace-md);
+}
+
+.c-card__header {
+    padding-bottom: 0;
+}
+
+.c-card__header > *:last-child,
+.c-card__body > *:last-child {
+    margin-bottom: 0;
+}
+
+/*
+    Component: Input
+    ---
+    Class to put on all input="text" like form inputs
+*/
+
+.c-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    border: 1px solid var(--global-color-neutral-xx-light);
+    border-radius: var(--global-borderRadius);
+    background-color: #fff;
+    color: var(--global-color-neutral-xxxx-dark);
+    font-family: inherit;
+    /* font-size: 13px;
+    line-height: 20px;
+    padding: 4px 10px; */
+    font-size: 0.8666666667rem;
+    line-height: calc(var(--global-baseline) * 4);
+    padding: calc(var(--global-whitespace-xxs) - 1px) var(--global-whitespace-xs);
+    outline: none;
+    box-shadow: var(--inset-shadow);
+    transition: border var(--global-transition-alpha);
+    box-shadow: var(--global-input-shadow);
+}
+
+.c-input:hover {
+    border-color: var(--global-color-neutral-x-light);
+}
+
+.c-input:focus,
+.c-input:active {
+    border-color: var(--global-color-alpha-light);
+    box-shadow: var(--global-input-focus-shadow);
+}
+
+/*
+    Component: Custom Select
+    ---
+    Custom select dropdown
+*/
+
+
+.c-custom-select {
+    display: block;
+    position: relative;
+}
+
+.c-custom-select__input {
+    padding-right: calc(var(--global-baseline) * 5);
+}
+
+.c-custom-select__symbol {
+    width: calc(11rem / var(--global-root-font-size));
+    height: calc(16rem / var(--global-root-font-size));
+    position: absolute;
+    top: 50%;
+    /* transform: translateY(calc(-8rem / var(--global-root-font-size))); */
+    transform: translateY(-50%);
+    right: var(--global-whitespace-xs);
+    pointer-events: none;
+    fill: var(--global-color-neutral-light);
+}
+
+/*
+    Donut Chart
+*/
+
+.c-donut {
+    /* all metrics should be in px otherwise calc won't work for some reason. */
+    --donut-viewbox: 100px; /* this variable should be the same as the viewbox attribute in html. */
+    --donut__circle-stroke-width: 10px;
+    --donut__circle-center: calc(var(--donut-viewbox) / 2);
+    /* The stroke is centered so we need to take that into account.
+    Otherwise some parts would be outside of the viewbox */
+    --donut__circle-radius: calc(var(--donut-viewbox) / 2 - var(--donut__circle-stroke-width) / 2);
+    --donut__circle-circumference: calc(var(--donut__circle-radius) * 2 * var(--pi));
+    --donut__circle-gap: 20px;
+    --donut__circle-circumference-gap: calc(var(--donut__circle-circumference) - var(--donut__circle-gap));
+    /* width: var(--donut-viewbox);
+    height: var(--donut-viewbox); */
+    margin: 0 auto;
+    max-width: 150px;
+    display: block;
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
 
 /*------------------------------------*\
 #UTILITIES
 \*------------------------------------*/
 
 /*
-    Utilities: Mute
-    Mute with opacity
+    Utilities: color
+    ---
+    Utility classes to put specific colors onto elements
 */
 
-/*------------------------------------*\
-#STATES
-\*------------------------------------*/
+.u-color-neutral {
+    color: var(--global-color-neutral);
+}
+
+.u-color-neutral-dark {
+    color: var(--global-color-neutral-dark);
+}
 
 /*
-    Change the theme using CSS vars.
+    Utilities: spacing
+    ---
+    Utility classes to put specific margins and paddings onto elements
 */
 
-/* Night version: just switch the light and dark vars */
+.u-pt-clear {
+    padding-top: 0 !important;
+}
+
+.u-mb-clear {
+    margin-bottom: 0 !important;
+}
+
+.u-mb-xxs {
+    margin-bottom: var(--global-whitespace-xxs) !important;
+}
+
+.u-mb-xs {
+    margin-bottom: var(--global-whitespace-xs) !important;
+}
+
+.u-mb-sm {
+    margin-bottom: var(--global-whitespace-sm) !important;
+}
+
+.u-mb-md {
+    margin-bottom: var(--global-whitespace-md) !important;
+}
+
+.u-mb-lg {
+    margin-bottom: var(--global-whitespace-lg) !important;
+}
+
+.u-mb-xl {
+    margin-bottom: var(--global-whitespace-xl) !important;
+}
+
+/*
+    Utilities: max-width
+    ---
+    Utility classes to put specific max widths onto elements
+*/
+
+.u-max-width-xs {
+    max-width: 27em !important;
+}
+
+.u-max-width-sm {
+    max-width: 39em !important;
+}
+
+.u-max-width-md {
+    max-width: 50em !important;
+}
+
+.u-max-width-lg {
+    max-width: 63.5em !important;
+}
+
+.u-max-width-none {
+    max-width: none !important;
+}
+
+
+/*
+    Utilities: align
+    ---
+    Utility classes align text or components
+*/
+
+.u-align-text-center {
+    text-align: center;
+}
+
+.u-align-center {
+    margin: 0 auto;
+}
+
+/*
+    Utilities: text
+    Utility classes to create smaller or bigger test
+*/
+
+.u-text-xs {
+    font-size: calc(11rem / var(--global-root-font-size));
+}
+
+.u-text-sm {
+    font-size: calc(13rem / var(--global-root-font-size));
+    line-height: calc(var(--global-baseline) * 4);
+}
+
+/*
+    Utilities: span
+    Utility classes to span grid items across the x and y axis
+*/
+
+/* x: horizontal */
+
+@media (min-width: 62em) {
+
+    .u-x-span-3-bp3 {
+        grid-column: span 3;
+    }
+
+    .u-x-span-4-bp3 {
+        grid-column: span 4;
+    }
+
+    .u-x-span-6-bp3 {
+        grid-column: span 6;
+    }
+
+    .u-x-span-8-bp3 {
+        grid-column: span 8;
+    }
+
+    .u-x-span-9-bp3 {
+        grid-column: span 9;
+    }
+
+}
+
+/* y: vertical */
+
+@media (min-width: 62em) {
+
+    .u-y-span-2-bp3 {
+        grid-row: span 2;
+    }
+
+}
 
 /*------------------------------------*\
 #MEDIA
 \*------------------------------------*/
+
+/*
+    Media Queries
+    ---
+    EXAMPLE Media Queries for Responsive Design.
+    These examples override the primary ('mobile first') styles.
+    USE THEM INLINE!
+*/
+
+/* Extra small devices (portrait phones, less than 576px)
+No media query since this is the default in mobile first design
+*/
+
+/* Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {}
+*/
+
+/* Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {}
+*/
+
+/* Large devices (landscape tablets, desktops, 62em and up)
+@media (min-width: 62em) {}
+*/
+
+/* Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
+*/
 
 /*
     Print styles.
