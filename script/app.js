@@ -1,37 +1,4 @@
-const search = document.getElementById('search');
-
-const poke_container = document.getElementById('poke_container');
-
-const searchPokemons = async searchText => {
-	// Met de fetch API proberen we de data op te halen.
-	const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
-	.then(r=>r.json())
-	.then(pokemon => pokemon.results)
-	.catch((err)=>console.error("error: ", err));
-	
-	let matches = pokemon.filter(pokemon => {
-		const exp = new RegExp(`^${searchText}`, 'gi');
-		return pokemon.name.match(exp);
-	});
-
-	if (searchText.length > 0) {
-		removePokemonCard();
-	}
-
-	for (const match of matches) {
-		var id = match.url;
-		id = id.slice(34, -1);
-		getPokemon(id);
-	}
-
-	if (searchText.length == 0) {
-		fetchPokemons();
-	}
-};
-
-search.addEventListener('input', () => searchPokemons(search.value));
-
-const pokemons_number = 151;
+const pokemons_number = 3;
 var backgroundType1;
 var backgroundType2;
 var firstType = "";
@@ -56,13 +23,43 @@ const colors = {
 	electric: '#FDE53C',
 	fairy: '#F9ADFF',
 };
-const main_types = Object.keys(colors);
+const search = document.getElementById('search');
+
+const poke_container = document.getElementById('poke_container');
+
+const searchPokemons = async searchText => {
+	// Met de fetch API proberen we de data op te halen.
+	const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
+	.then(r=>r.json())
+	.then(pokemon => pokemon.results)
+	.catch((err)=>console.error("error: ", err));
+	
+	let matches = pokemon.filter(pokemon => {
+		const exp = new RegExp(`^${searchText}`, 'gi');
+		return pokemon.name.match(exp);
+	});
+
+	if (searchText.length > 0) {
+		removePokemonCard();
+		for (const match of matches) {
+			var id = match.url;
+			id = id.slice(34, -1);
+			getPokemon(id);
+		}
+	}
+
+	if (searchText.length === 0) {
+		fetchPokemons();
+	}
+};
+
+search.addEventListener('input', () => searchPokemons(search.value));
 
 const fetchPokemons = async () => {
 	removePokemonCard();
     for (let i = 1; i <= pokemons_number; i++) {
         await getPokemon(i);
-    }
+	}
 }
 
 const getPokemon = async (id) => {
