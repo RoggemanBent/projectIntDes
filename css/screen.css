@@ -564,6 +564,24 @@ progress:after {
     .grid_profile {
         grid-area: 3 / 3 / 4 / 6;
     }
+
+    .c-launchgrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+    
+    .grid-mockup {
+        grid-area: 1 / 1 / 2 / 2;
+        height: 50%;
+    }
+    
+    .grid-form {
+        grid-area: 1 / 2 / 2 / 3;
+        height: 50%;
+    }
 }
 
 /*
