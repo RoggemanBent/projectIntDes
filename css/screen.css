@@ -1,59 +1,3 @@
-.pokemon {
-    height: auto;
-}
-
-.type {
-    width: 75px;
-    border: 1px solid white;
-    border-radius: 50px;
-    text-align: center;
-    color: white;
-}
-
-progress {
-    width: 35%;
-    height: 25px;
-}
-
-progress:after {
-    margin: 15%;
-    content: attr(value);
-    color: white;
-}
-
-.label {
-    display: inline-block;
-    width: 50%;
-    margin: 10px;
-}
-
-.c-pokedex {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
-}
-
-.grid_photo { grid-area: 1 / 1 / 3 / 3; }
-.grid_type { grid-area: 3 / 1 / 4 / 3; }
-.grid_stats { grid-area: 1 / 3 / 3 / 6; }
-.grid_profile { grid-area: 3 / 3 / 4 / 6; }
-
-/* Create two equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 /*------------------------------------*\
 #FONTS
 \*------------------------------------*/
@@ -65,55 +9,45 @@ progress:after {
 :root {
     /* typography */
     --global-root-font-size: 15;
-
     /* colors */
     --global-color-alpha-light: #ef5350;
     --global-color-alpha: #e6312e;
-
     --global-color-beta: #ffe6e6;
-
-
-    
     --global-color-neutral-xxx-light: #fff2f2;
     --global-color-neutral-xx-light: #ffe6e6;
     --global-color-neutral-x-light: #ffb4b3;
-    --global-color-neutral-light:#ef5350;
+    --global-color-neutral-light: #ef5350;
     --global-color-neutral: #e6312e;
     --global-color-neutral-dark: #b31512;
     --global-color-neutral-x-dark: #800200;
     --global-color-neutral-xx-dark: #4d0100;
     --global-color-neutral-xxx-dark: #1a0000;
-
     /* Shadows */
-    --global-box-shadow: 0 0 0 1px rgba(0,0,0,.025), 0 2px 6px rgba(0,0,0,.05);
-    --global-box-shadow-lg: 0 0 0 1px rgba(0,0,0,.025), 0 2px 10px rgba(0,0,0,.1);
-
-    --global-input-shadow: 0 2px 3px rgba(0,0,0,.05);
+    --global-box-shadow: 0 0 0 1px rgba(0, 0, 0, .025), 0 2px 6px rgba(0, 0, 0, .05);
+    --global-box-shadow-lg: 0 0 0 1px rgba(0, 0, 0, .025), 0 2px 10px rgba(0, 0, 0, .1);
+    --global-input-shadow: 0 2px 3px rgba(0, 0, 0, .05);
     --global-input-focus-shadow: 0 0 5px var(--global-color-alpha-light);
-
     /* radius */
     --global-borderRadius: calc(4rem / var(--global-root-font-size));
-
-    /* Whitespace */    
-    /* 
-        global font-size = 15px
-        baseline = 5px        
-        15px = 1rem
-        5px = 1rem/3
-        This would equal to 0.3333333...rem but let the browser do the math
-    */
-    --global-baseline: calc(1rem / 3); 
-    --global-whitespace-xxs: var(--global-baseline); /* = 5px */
-    --global-whitespace-xs: calc(var(--global-baseline) * 2); /* = 10px */
-    --global-whitespace-sm: calc(var(--global-baseline) * 3); /* = 15px */
-    --global-whitespace-md: calc(var(--global-baseline) * 4); /* = 20px */
-    --global-whitespace-lg: calc(var(--global-baseline) * 5); /* = 25px */
-    --global-whitespace-xl: calc(var(--global-baseline) * 6); /* = 30px */
-
+    /* Baseline settings */
+    --global-baseline: 8px;
+    --global-whitespace: calc(var(--global-baseline) * 3);
+    /* = 24px */
+    --global-whitespace-xs: calc(var(--global-baseline) * .5);
+    /* = 4px */
+    --global-whitespace-sm: calc(var(--global-baseline) * 1);
+    /*  = 8px */
+    --global-whitespace-md: calc(var(--global-baseline) * 2);
+    /*  = 16px */
+    --global-whitespace-lg: calc(var(--global-baseline) * 4);
+    /*  = 32px */
+    --global-whitespace-xl: calc(var(--global-whitespace) * 2);
+    /*  = 48px */
+    --global-whitespace-xxl: calc(var(--global-whitespace) * 3);
+    /*  = 72px */
     /* transitions */
     --global-transition-alpha: .2s;
-	--global-transition-beta: 1s;
-
+    --global-transition-beta: 1s;
     --pi: 3.14159265359;
 }
 
@@ -129,8 +63,10 @@ progress:after {
 
 html {
     /* font-size: 15px; */
-    font-size: 93.75%; /* = 15px in case of 16px default font-size */
-    line-height: 1.6666667em; /* = 25px */
+    font-size: 93.75%;
+    /* = 15px in case of 16px default font-size */
+    line-height: 1.6666667em;
+    /* = 25px */
     font-family: "Source Sans Pro", Helvetica, arial, sans-serif;
     color: var(--global-color-neutral-xxx-dark);
     box-sizing: border-box;
@@ -139,9 +75,7 @@ html {
     background-color: var(--global-color-neutral-xxxx-light);
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
     box-sizing: inherit;
 }
 
@@ -185,9 +119,7 @@ img {
     Default markup for typographic elements
 */
 
-h1,
-h2,
-h3 {
+h1, h2, h3 {
     font-weight: 700;
 }
 
@@ -214,9 +146,7 @@ h3 {
     margin: 0 0 var(--global-whitespace-md);
 }
 
-h4,
-h5,
-h6 {
+h4, h5, h6 {
     /* font-size: 15px; */
     font-size: 1rem;
     font-weight: 600;
@@ -224,23 +154,15 @@ h6 {
     margin: 0 0 var(--global-whitespace-md);
 }
 
-p,
-ol,
-ul,
-dl,
-table,
-address,
-figure {
+p, ol, ul, dl, table, address, figure {
     margin: 0 0 var(--global-whitespace-md);
 }
 
-ul,
-ol {
+ul, ol {
     padding-left: 24px;
 }
 
-li ul,
-li ol {
+li ul, li ol {
     margin-bottom: 0;
 }
 
@@ -278,14 +200,18 @@ a {
     outline-offset: 2px;
 }
 
-a:visited,
-a:active {
+a:visited, a:active {
     color: var(--global-color-beta);
 }
 
-a:hover,
-a:focus {
+a:hover, a:focus {
     color: var(--global-color-alpha);
+}
+
+label, input {
+    display: inline-block;
+    width: 50%;
+    margin: 10px;
 }
 
 select {
@@ -296,9 +222,32 @@ input::placeholder {
     color: var(--global-color-neutral-light);
 }
 
+progress {
+    width: 35%;
+    height: 25px;
+}
+
+progress:after {
+    margin: 15%;
+    content: attr(value);
+    color: white;
+}
+
 /*------------------------------------*\
 #OBJECTS
 \*------------------------------------*/
+
+/*
+    Objects: Column
+    ---
+    Creates a vertical column that stretches the viewport and adds padding around children
+*/
+
+.o-column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
 
 /*
     Objects: Row
@@ -311,6 +260,12 @@ input::placeholder {
     padding: var(--global-whitespace-lg) var(--global-whitespace-lg) var(--global-baseline);
 }
 
+.o-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 /*
     Objects: Container
     ---
@@ -320,7 +275,8 @@ input::placeholder {
 .o-container {
     margin-left: auto;
     margin-right: auto;
-    max-width: 78em; /* 78 * 15px = 1170 */
+    max-width: 78em;
+    /* 78 * 15px = 1170 */
     width: 100%;
 }
 
@@ -348,18 +304,14 @@ input::placeholder {
     width: auto;
     overflow: visible;
     background: transparent;
-
     /* inherit font & color from ancestor */
     color: inherit;
     font: inherit;
-
     /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
     line-height: normal;
-
     /* Corrects font smoothing for webkit */
     -webkit-font-smoothing: inherit;
     -moz-osx-font-smoothing: inherit;
-
     /* Corrects inability to style clickable `input` types in iOS */
     -webkit-appearance: none;
 }
@@ -386,21 +338,57 @@ input::placeholder {
 \*------------------------------------*/
 
 /*
+    Component: Type
+    ---
+    Display types of pokemon
+*/
+
+.c-type {
+    width: 75px;
+    border: 1px solid white;
+    border-radius: 50px;
+    text-align: center;
+    color: white;
+}
+
+/*
+    Component: Pokedex
+    ---
+    Pokemon list
+*/
+.c-pokedex {
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(3, 45% 25% 25%);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+    
+.grid_photo { grid-area: 1 / 1 / 2 / 2; }
+.grid_stats { grid-area: 1 / 2 / 2 / 4; }
+.grid_type { grid-area: 2 / 1 / 3 / 4; }
+.grid_profile { grid-area: 3 / 1 / 4 / 4; }
+
+.pokemon-name {
+    height: auto;
+}
+
+/*
     Component: Logo
     ---
     Website main logo
 */
 
 .c-logo {
-    margin: 0;
-    /* font-size: 15px; */
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    /* letter-spacing: 2px; */
-    letter-spacing: 0.13333333em; /* = 2px */
-    line-height: var(--global-whitespace-md);
-    color: #fff;
+    height: var(--global-whitespace-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+}
+
+.c-logo_image {
+    height: var(--global-whitespace-xl);
 }
 
 /*
@@ -410,18 +398,17 @@ input::placeholder {
 */
 
 .c-load-container {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	width: 100%;
-	min-height: 376px;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 376px;
 }
 
 .c-loader {
     /* // all metrics should be in px otherwise calc won't work for some reason. */
-    --loader-viewbox: 50px; /* this variable should be the same as the viewbox attribute in html. */
+    --loader-viewbox: 50px;
+    /* this variable should be the same as the viewbox attribute in html. */
     --loader__circle-stroke-width: 5px;
     --loader__circle-center: calc(var(--loader-viewbox) / 2);
     /* // The stroke is centered so we need to take that into account.
@@ -446,9 +433,7 @@ input::placeholder {
     r: var(--loader__circle-radius);
     cx: var(--loader__circle-center);
     cy: var(--loader__circle-center);
-    animation: rotateCircle calc(var(--animation-duration) + 0.25s) linear infinite,
-    strokeCircle var(--animation-duration) infinite,
-    strokeColor calc(var(--animation-duration) * 5) calc(var(--animation-duration) / 2) infinite;
+    animation: rotateCircle calc(var(--animation-duration) + 0.25s) linear infinite, strokeCircle var(--animation-duration) infinite, strokeColor calc(var(--animation-duration) * 5) calc(var(--animation-duration) / 2) infinite;
     transform-origin: center;
 }
 
@@ -491,12 +476,12 @@ input::placeholder {
 */
 
 .c-app {
-    --c-app__topbar-height: calc(var(--global-baseline) * 14);
+    --c-app__topbar-height: calc(var(--global-baseline) * 10);
     min-height: 100vh;
 }
 
 .c-app__logo {
-    background-color: var(--global-color-neutral);
+    background-color: var(--global-color-neutral-xxx-light);
     padding: 0 var(--global-whitespace-lg);
     height: var(--c-app__topbar-height);
     display: flex;
@@ -522,20 +507,15 @@ input::placeholder {
 }
 
 @media (min-width: 62em) {
-
-    .c-app__topbar,
-    .c-app__sidebar {
+    .c-app__topbar, .c-app__sidebar {
         display: block;
     }
-
     .c-app {
         display: grid;
         grid-template-columns: 17rem 1fr;
         grid-template-rows: var(--c-app__topbar-height) 1fr;
     }
-
     /* Scroll behaviour */
-
     /*
         Solution 1
         Laat toe om overal te scrollen om de main te laten scrollen.
@@ -543,7 +523,6 @@ input::placeholder {
         Zorgt er ook voor dat c-app__main onder c-app__topbar verdwijnt.
         Is meer "webby".
     */
-
     /* .c-app__topbar,
     .c-app__logo {
         position: sticky;
@@ -556,18 +535,34 @@ input::placeholder {
         height: calc(100vh - var(--c-app__topbar-height));
         overflow: auto;
     } */
-
     /*
         Solution 2
         Zorgt er voor dat je enkel in de main of de sidebar kan scrollen.
         Is meer "appy".
     */
-
-    .c-app__sidebar,
-    .c-app__main {
+    .c-app__sidebar, .c-app__main {
         height: calc(100vh - var(--c-app__topbar-height));
         overflow-y: auto;
         overflow-x: hidden;
+    }
+    .c-pokedex {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+    }
+    .grid_photo {
+        grid-area: 1 / 1 / 3 / 3;
+    }
+    .grid_type {
+        grid-area: 3 / 1 / 4 / 3;
+    }
+    .grid_stats {
+        grid-area: 1 / 3 / 3 / 6;
+    }
+    .grid_profile {
+        grid-area: 3 / 3 / 4 / 6;
     }
 }
 
@@ -593,7 +588,7 @@ input::placeholder {
     /* font-size: 15px; */
     /* line-height: 20px; */
     /* padding: 15px 25px 15px 20px; */
-    font-size: 1rem;    
+    font-size: 1rem;
     line-height: calc(var(--global-baseline) * 4);
     padding: var(--global-whitespace-sm) var(--global-whitespace-lg) var(--global-whitespace-sm) var(--global-whitespace-md);
     border-left: 5px solid var(--global-color-alpha);
@@ -607,15 +602,11 @@ input::placeholder {
     transition-duration: var(--global-transition-alpha);
 }
 
-.c-main-nav__link,
-.c-main-nav__link:hover,
-.c-main-nav__link:visited {
+.c-main-nav__link, .c-main-nav__link:hover, .c-main-nav__link:visited {
     color: #fff;
 }
 
-.c-main-nav__link:hover,
-.c-main-nav__link:focus,
-.is-selected .c-main-nav__link {
+.c-main-nav__link:hover, .c-main-nav__link:focus, .is-selected .c-main-nav__link {
     color: #fff;
     background-color: var(--global-color-neutral);
     /* border-color: var(--global-color-alpha); */
@@ -627,23 +618,21 @@ input::placeholder {
     /* display: block; */
     /* width: 16px;
     height: 16px; */
-    width: 1rem; /* = 15px */
-    height: 1rem; 
+    width: 1rem;
+    /* = 15px */
+    height: 1rem;
     margin-right: var(--global-whitespace-xs);
     fill: var(--global-color-neutral-light);
     transition: fill var(--global-transition-alpha);
 }
 
-.c-main-nav__link:hover .c-main-nav__icon,
-.c-main-nav__link:focus .c-main-nav__icon,
-.is-selected .c-main-nav__icon {
+.c-main-nav__link:hover .c-main-nav__icon, .c-main-nav__link:focus .c-main-nav__icon, .is-selected .c-main-nav__icon {
     fill: var(--global-color-alpha);
 }
 
 /*
     Component: topbar
 */
-
 
 .c-topbar {
     padding: 0 var(--global-whitespace-lg);
@@ -698,7 +687,7 @@ input::placeholder {
 .c-user__dropdown-button {
     display: flex;
     align-items: center;
-    white-space:nowrap;
+    white-space: nowrap;
     line-height: var(--global-whitespace-md);
     outline: none;
     color: var(--global-color-neutral);
@@ -748,7 +737,7 @@ input::placeholder {
     margin-bottom: 0;
 }
 
-.c-quick-nav__item + .c-quick-nav__item {
+.c-quick-nav__item+.c-quick-nav__item {
     margin-left: var(--global-whitespace-sm);
 }
 
@@ -771,18 +760,14 @@ input::placeholder {
     right: -3px;
     top: calc(-5rem / var(--global-root-font-size));
     right: calc(-3rem / var(--global-root-font-size));
-
 }
 
-.c-quick-nav__action,
-.c-quick-nav__action:visited,
-.c-quick-nav__action:active {
+.c-quick-nav__action, .c-quick-nav__action:visited, .c-quick-nav__action:active {
     display: block;
     color: var(--global-color-neutral-x-light);
 }
 
-.c-quick-nav__action:hover,
-.c-quick-nav__action:focus {
+.c-quick-nav__action:hover, .c-quick-nav__action:focus {
     color: var(--global-color-neutral-light);
 }
 
@@ -804,14 +789,14 @@ input::placeholder {
     position: relative;
 }
 
-.c-dropdown-toggle.is-open + .c-dropdown {
+.c-dropdown-toggle.is-open+.c-dropdown {
     opacity: 1;
     pointer-events: auto;
     transform: none;
 }
 
-.c-dropdown-toggle.is-open + .c-dropdown {
-  opacity: 1;
+.c-dropdown-toggle.is-open+.c-dropdown {
+    opacity: 1;
 }
 
 .c-dropdown {
@@ -862,9 +847,7 @@ input::placeholder {
     margin: 0;
 }
 
-.c-dropdown__link,
-.c-dropdown__link:visited,
-.c-dropdown__link:active {
+.c-dropdown__link, .c-dropdown__link:visited, .c-dropdown__link:active {
     display: block;
     padding: var(--global-baseline) 0;
     text-decoration: none;
@@ -873,8 +856,7 @@ input::placeholder {
     font-size: 0.8666666667;
 }
 
-.c-dropdown__link:hover,
-.c-dropdown__link:focus {
+.c-dropdown__link:hover, .c-dropdown__link:focus {
     color: var(--global-color-neutral-x-dark);
 }
 
@@ -907,7 +889,6 @@ input::placeholder {
     .c-dashboard {
         grid-template-columns: repeat(12, 1fr);
     }
-
     .c-pokedex__item {
         grid-column: 1 / -1;
     }
@@ -937,8 +918,7 @@ input::placeholder {
     line-height: calc(var(--global-baseline) * 5);
 }
 
-.c-card__header,
-.c-card__body {
+.c-card__header, .c-card__body {
     padding: var(--global-whitespace-md);
 }
 
@@ -946,8 +926,7 @@ input::placeholder {
     padding-bottom: 0;
 }
 
-.c-card__header > *:last-child,
-.c-card__body > *:last-child {
+.c-card__header>*:last-child, .c-card__body>*:last-child {
     margin-bottom: 0;
 }
 
@@ -983,8 +962,7 @@ input::placeholder {
     border-color: var(--global-color-neutral-x-light);
 }
 
-.c-input:focus,
-.c-input:active {
+.c-input:focus, .c-input:active {
     border-color: var(--global-color-alpha-light);
     box-shadow: var(--global-input-focus-shadow);
 }
@@ -994,7 +972,6 @@ input::placeholder {
     ---
     Custom select dropdown
 */
-
 
 .c-custom-select {
     display: block;
@@ -1023,7 +1000,8 @@ input::placeholder {
 
 .c-donut {
     /* all metrics should be in px otherwise calc won't work for some reason. */
-    --donut-viewbox: 100px; /* this variable should be the same as the viewbox attribute in html. */
+    --donut-viewbox: 100px;
+    /* this variable should be the same as the viewbox attribute in html. */
     --donut__circle-stroke-width: 10px;
     --donut__circle-center: calc(var(--donut-viewbox) / 2);
     /* The stroke is centered so we need to take that into account.
@@ -1123,7 +1101,6 @@ input::placeholder {
     max-width: none !important;
 }
 
-
 /*
     Utilities: align
     ---
@@ -1160,37 +1137,29 @@ input::placeholder {
 /* x: horizontal */
 
 @media (min-width: 62em) {
-
     .u-x-span-3-bp3 {
         grid-column: span 3;
     }
-
     .u-x-span-4-bp3 {
         grid-column: span 4;
     }
-
     .u-x-span-6-bp3 {
         grid-column: span 6;
     }
-
     .u-x-span-8-bp3 {
         grid-column: span 8;
     }
-
     .u-x-span-9-bp3 {
         grid-column: span 9;
     }
-
 }
 
 /* y: vertical */
 
 @media (min-width: 62em) {
-
     .u-y-span-2-bp3 {
         grid-row: span 2;
     }
-
 }
 
 /*------------------------------------*\
@@ -1233,9 +1202,7 @@ No media query since this is the default in mobile first design
 */
 
 @media print {
-    *,
-    *:before,
-    *:after {
+    *, *:before, *:after {
         background: transparent !important;
         color: #000 !important;
         /* Black prints faster:
@@ -1243,8 +1210,7 @@ No media query since this is the default in mobile first design
         box-shadow: none !important;
         text-shadow: none !important;
     }
-    a,
-    a:visited {
+    a, a:visited {
         text-decoration: underline;
     }
     a[href]:after {
@@ -1257,15 +1223,13 @@ No media query since this is the default in mobile first design
     * Don't show links that are fragment identifiers,
     * or use the `javascript:` pseudo protocol
     */
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
+    a[href^="#"]:after, a[href^="javascript:"]:after {
         content: "";
     }
     pre {
         white-space: pre-wrap !important;
     }
-    pre,
-    blockquote {
+    pre, blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
@@ -1276,18 +1240,14 @@ No media query since this is the default in mobile first design
     thead {
         display: table-header-group;
     }
-    tr,
-    img {
+    tr, img {
         page-break-inside: avoid;
     }
-    p,
-    h2,
-    h3 {
+    p, h2, h3 {
         orphans: 3;
         widows: 3;
     }
-    h2,
-    h3 {
+    h2, h3 {
         page-break-after: avoid;
     }
 }
