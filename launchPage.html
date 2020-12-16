@@ -11,7 +11,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/screen2.css">
+    <link rel="stylesheet" href="css/screen.css">
 
     <script src="script/app.js" defer></script>
 </head>
@@ -19,7 +19,7 @@
 <body>
     <section class="o-row o-row--lg o-row--login">
         <div class="o-container u-max-width-lg">
-            <h1 class="c-logo">
+            <h1 class="c-logo c-logo__launch">
                 <img class="c-logo_image" src="img/pokelist.png" alt="PokeList">
             </h1>
             <div class="c-launchgrid">
@@ -27,13 +27,15 @@
                     <img class="o-image_mockup" src="img/mockup.gif" alt="mockup">
                 </div>
                 <div class="grid-form">
-                    <form class="c-card" action="#">
+                    <form class="c-card c-card__launch" action="#">
                         <div class="c-card__body">
                             <h2 class="c-card__title">
                                 1 place for all your Pokemon
                             </h2>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.
+                            <p>
+                                We, PokeList, have developed a new pokedex. Do you want to stay informed when it's released? <br>
+                                Sign up now so we can contact you when this application is ready!
+                            </p>
                             <p class="c-form-field js-email-field">
                                 <label class="c-label js-email-label" for="username">
                                     Email address
@@ -42,7 +44,7 @@
                                     </span>
                                 </label>
                                 <input class="c-input js-email-input" type="email" name="username" id="username"
-                                    placeholder="e.g. john@doe.com" required>
+                                    placeholder="email@adress.com" required>
                             </p>
                             <!-- Custom checkbox -->
                             <p class="c-form-field c-form-field--option">
@@ -58,12 +60,12 @@
                                                 transform="translate(-1.5 -2.75)" />
                                         </svg>
                                     </span>
-                                    Remember me
+                                    Do you want extra information about our company?
                                 </label>
                             </p>
                             <p class="u-mb-md">
                                 <!-- Button -->
-                                <button class="o-button-reset c-button js-sign-in-button">Sign in</button>
+                                <button class="o-button-reset c-button js-sign-in-button">Sign up</button>
                             </p>
                         </div>
                     </form>

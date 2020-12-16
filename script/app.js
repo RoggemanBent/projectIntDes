@@ -69,7 +69,7 @@ const getPokemon = async (id) => {
 		.catch((err)=>console.error("error: ", err));
 		
 	// Als dat gelukt is, gaan we naar onze showResult functie.
-	// console.log(pokemon);
+	console.table(pokemon);
 	createPokemonCard(pokemon);
 };
 
@@ -118,7 +118,7 @@ function createPokemonCard(pokemon) {
 			<div class="c-pokedex__item">
 				<div class="c-card">
 					<div class="c-card__body">
-						<h3>Types</h3>
+					<h2 class="c-card__title">Types</h2>
 						<div class="o-row">
 							<div class="o-column">
 							  <p class="c-type" style="background-color: ${backgroundType1};">${pokemon.types[0].type.name}</p>
@@ -135,19 +135,25 @@ function createPokemonCard(pokemon) {
 			<div class="c-pokedex__item">
 				<div class="c-card">
 					<div class="c-card__body">
-						<h3>Stats</h3>
+						<h2 class="c-card__title">Stats</h2>
                         <label class="label" for="file">HP</label>
-                        <progress id="file" value="${pokemon.stats[0].base_stat}" max="100"></progress>
+                        <progress class="c-progress" id="file" value="${pokemon.stats[0].base_stat}" max="100"></progress>
+                        <label class="labelPercentage" for="file">${pokemon.stats[0].base_stat}</label>
                         <label class="label" for="file">Attack</label>
-                        <progress id="file" value="${pokemon.stats[1].base_stat}" max="100"></progress>
+                        <progress class="c-progress" id="file" value="${pokemon.stats[1].base_stat}" max="100"></progress>
+                        <label class="labelPercentage" for="file">${pokemon.stats[1].base_stat}</label>
                         <label class="label" for="file">Defense</label>
-                        <progress id="file" value="${pokemon.stats[2].base_stat}" max="100"></progress>
+                        <progress class="c-progress" id="file" value="${pokemon.stats[2].base_stat}" max="100"></progress>
+                        <label class="labelPercentage" for="file">${pokemon.stats[2].base_stat}</label>
                         <label class="label" for="file">Speed</label>
-                        <progress id="file" value="${pokemon.stats[3].base_stat}" max="100"></progress>
+                        <progress class="c-progress" id="file" value="${pokemon.stats[3].base_stat}" max="100"></progress>
+                        <label class="labelPercentage" for="file">${pokemon.stats[3].base_stat}</label>
                         <label class="label" for="file">Special Attack</label>
-                        <progress id="file" value="${pokemon.stats[4].base_stat}" max="100"></progress>
+                        <progress class="c-progress" id="file" value="${pokemon.stats[4].base_stat}" max="100"></progress>
+                        <label class="labelPercentage" for="file">${pokemon.stats[4].base_stat}</label>
                         <label class="label" for="file">Special Defense</label>
-                        <progress id="file" value="${pokemon.stats[5].base_stat}" max="100"></progress>
+                        <progress class="c-progress" id="file" value="${pokemon.stats[5].base_stat}" max="100"></progress>
+                        <label class="labelPercentage" for="file">${pokemon.stats[5].base_stat}</label>
 					</div>
 				</div>
 			</div>
@@ -156,7 +162,7 @@ function createPokemonCard(pokemon) {
 			<div class="c-pokedex__item">
 				<div class="c-card">
 					<div class="c-card__body">
-						<h3>Profile</h3>
+					<h2 class="c-card__title">Profile</h2>
 						<div class="o-row">
 							<div class="o-column">
 							  <p>Height: ${(pokemon.height)/10} m</p>
