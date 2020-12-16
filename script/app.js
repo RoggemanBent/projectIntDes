@@ -1,4 +1,4 @@
-const pokemons_number = 3;
+const pokemons_number = 151;
 var backgroundType1;
 var backgroundType2;
 var firstType = "";

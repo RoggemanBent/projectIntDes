@@ -104,7 +104,7 @@ html {
     /* = 15px in case of 16px default font-size */
     line-height: 1.6666667em;
     /* = 25px */
-    font-family: "Source Sans Pro", Helvetica, arial, sans-serif;
+    font-family: "Inter", Helvetica, arial, sans-serif;
     color: var(--global-color-neutral-xxx-dark);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
